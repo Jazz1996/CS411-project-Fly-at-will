@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Result</title>
+</head>
+<body>
+<table border="1">
+    <thead>
+    <tr>
+        <th>FlightNumber</th>
+        <th>Airlines</th>
+<!--        <th>Number</th>-->
+        <th>Departure</th>
+<!--        <th>Via</th>-->
+        <th>Arrival</th>
+        <th>DepartureTime</th>
+        <th>ArrivalTime</th>
+<!--        <th>Distance</th>-->
+<!--        <th>Price</th>-->
+    </tr>
+    </thead>
+    {% for row in result %}
+    <tr>
+        <td>{{ row.numbers }}</td>
+        <td>{{ row.airlines }}</td>
+        <td>{{ row.deptcity }}</td>
+        <td>{{ row.arrcity }}</td>
+        <td>{{ row.depttime }}</td>
+        <td>{{ row.arrtime }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

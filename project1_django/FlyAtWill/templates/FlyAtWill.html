@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fly At Will</title>
+</head>
+<body>
+<form method="POST" action="/search-results">
+    {% csrf_token %}
+    From:<input type="text" name="From">
+    To:<input type="text" name="To">
+    Depart:<input type="date" name="Depart">
+    Return:<input type="date" name="Return">
+    <input type="submit" value="Search FlyAtWill Flights">
+</form>
+</body>
+</html>
