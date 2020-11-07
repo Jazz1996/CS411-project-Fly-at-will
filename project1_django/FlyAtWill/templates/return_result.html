@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Search Result</title>
+    <title>Return Result</title>
 </head>
 <body>
 <table border="1">
@@ -31,14 +31,14 @@
     </tr>
     {% endfor %}
 
-    {% for row in return_result %}
+    {% for row2 in return_result %}
     <tr>
-        <td>{{ row.flightno }}</td>
-        <td>{{ row.airlinecode }}</td>
-        <td>{{ row.deptiata }}</td>
-        <td>{{ row.arriata }}</td>
-        <td>{{ row.depttime }}</td>
-        <td>{{ row.arrtime }}</td>
+        <td>{{ row2.flightno }}</td>
+        <td>{{ row2.airlinecode }}</td>
+        <td>{{ row2.deptiata }}</td>
+        <td>{{ row2.arriata }}</td>
+        <td>{{ row2.depttime }}</td>
+        <td>{{ row2.arrtime }}</td>
     </tr>
     {% endfor %}
 </table>

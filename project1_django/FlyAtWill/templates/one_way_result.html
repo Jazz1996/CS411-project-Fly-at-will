@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Search Result</title>
+    <title>One way Result</title>
 </head>
 <body>
 <table border="1">
@@ -21,17 +21,6 @@
     </tr>
     </thead>
     {% for row in one_way_result %}
-    <tr>
-        <td>{{ row.flightno }}</td>
-        <td>{{ row.airlinecode }}</td>
-        <td>{{ row.deptiata }}</td>
-        <td>{{ row.arriata }}</td>
-        <td>{{ row.depttime }}</td>
-        <td>{{ row.arrtime }}</td>
-    </tr>
-    {% endfor %}
-
-    {% for row in return_result %}
     <tr>
         <td>{{ row.flightno }}</td>
         <td>{{ row.airlinecode }}</td>
