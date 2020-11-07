@@ -64,3 +64,9 @@
   border:1px solid #f00;
   z-index:100;
 }
+.striped {
+  position: relative;
+  top: -4em;
+  left: 5%;
+  width: 90%;
+}
