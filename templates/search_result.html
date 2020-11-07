@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/FlyAtWill.css">
+</head>
+<body>
+    <h1>Fly-At-Will</h1>
+    <h2>Search Result</h2>
+    <form method="post" action="/search/result">
+        From: <input type="text" name="dept" />
+        To: <input type="text" name="arr" />
+        Date: <input type="text" name="date" />
+        <input type="submit" value="submit" />
+    </form>
+    <h2>{{ msg }}</h2>
+    <table border="1">
+        {% for row in sr %}
+            <tr>
+                <td>{{ row.FlightNo }}</td>
+                <td>{{ row.DeptIATA }}</td>
+                <td>{{ row.ArrIATA }}</td>
+                <td>{{ row.DeptTime }}</td>
+                <td>{{ row.ArrTime }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
