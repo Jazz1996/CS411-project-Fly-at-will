@@ -58,25 +58,25 @@
         <tbody>
             {% for row in sr %}
                 <tr>
-                    <td>{{ row.FlightNo }}</td>
-                    <td>{{ row.AirlineCode }}</td>
-                    <td>{{ row.DeptIATA }}</td>
-                    <td>{{ row.ArrIATA }}</td>
-                    <td>{{ row.DeptTime }}</td>
-                    <td>{{ row.ArrTime }}</td>
-                    <td>{{ row.Aircraft }}</td>
-                    <td>{{ row.Distance }}</td>
-                    <td>{{ row.OTD }}</td>
-                    <td>{{ row.AvgDelay }}</td>
-                    <td>{{ row.Monday }}</td>
-                    <td>{{ row.Tuesday }}</td>
-                    <td>{{ row.Wednesday }}</td>
-                    <td>{{ row.Thursday }}</td>
-                    <td>{{ row.Friday }}</td>
-                    <td>{{ row.Saturday }}</td>
-                    <td>{{ row.Sunday }}</td>
+                    <td>{{ row.flightno }}</td>
+                    <td>{{ row.airlinecode }}</td>
+                    <td>{{ row.deptiata }}</td>
+                    <td>{{ row.arriata }}</td>
+                    <td>{{ row.depttime }}</td>
+                    <td>{{ row.arrtime }}</td>
+                    <td>{{ row.aircraft }}</td>
+                    <td>{{ row.distance }}</td>
+                    <td>{{ row.otd }}</td>
+                    <td>{{ row.avgdelay }}</td>
+                    <td>{{ row.monday }}</td>
+                    <td>{{ row.tuesday }}</td>
+                    <td>{{ row.wednesday }}</td>
+                    <td>{{ row.thursday }}</td>
+                    <td>{{ row.friday }}</td>
+                    <td>{{ row.saturday }}</td>
+                    <td>{{ row.sunday }}</td>
                     <td>
-                        <a href="/manage/update/?nid={{ row.FlightNo }}"> Edit </a> | <a href="/manage/delete/?nid={{ row.FlightNo }}"> Delete </a>
+                        <a href="/manage/update/?nid={{ row.flightno }}"> Edit </a> | <a href="/manage/delete/?nid={{ row.flightno }}"> Delete </a>
                     </td>
                 </tr>
             {% endfor %}
