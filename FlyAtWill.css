@@ -11,12 +11,12 @@
   font-size: calc(30px + 2vmin);
   color: black;
 }
-.nav-wrapper{
+/* .nav-wrapper{
   z-index: 1999;
   height: 20px;
   background-color: #26a69a;
   opacity: 60%;
-}
+} */
 .row {
   width: 400px;
   color: #3f50b5;
