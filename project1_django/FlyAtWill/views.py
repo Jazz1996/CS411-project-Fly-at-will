@@ -202,24 +202,27 @@ def RecommendFlight(request):
     for feature in feature_list:
         recommend_results = recommend_results.filter(characteristics__icontains=feature)
 
-    arrival_city = []
+    arrival_city = {}
     for row in recommend_results:
         if row.cityName != depart_city:
-            arrival_city.append(row.cityName)
+            arrival_city[row.cityName] = row.description
 
     recommend_flights = []
-    for arr_city in arrival_city:
+    to_be_del_keys = []
+    for key in arrival_city:
         query_search = "SELECT f.flightno, f.airlinecode, dept.iatacode, arr.iatacode, f.depttime, f.arrtime, f.monday, f.tuesday, f.wednesday, f.thursday, f.friday, f.saturday, f.sunday \
                         FROM Flight f JOIN Airport dept ON f.deptiata=dept.iatacode \
                         JOIN Airport arr ON f.arriata=arr.iatacode \
                         WHERE dept.city = %s AND arr.city = %s"
         cursor = connection.cursor()
-        cursor.execute(query_search, [depart_city, arr_city])
+        cursor.execute(query_search, [depart_city, key])
         tmp_result = cursor.fetchall()
         if tmp_result:
             recommend_flights.append(tmp_result)
         else:
-            arrival_city.remove(arr_city)
+            to_be_del_keys.append(key)
+    for key in to_be_del_keys:
+        del arrival_city[key]
 
     return render(request, 'recommend_result.html', {'arrival_city': arrival_city, 'recommend_flights': recommend_flights})
 

@@ -20,11 +20,13 @@
   <thead>
     <tr>
         <th>Recommended Cities</th>
+        <th>Descriptions</th>
     </tr>
   </thead>
-    {% for row in arrival_city %}
+    {% for key, value in arrival_city.items %}
     <tr>
-        <td>{{ row }}</td>
+        <td>{{ key }}</td>
+        <td>{{ value }}</td>
     </tr>
     {% endfor %}
 </table>
