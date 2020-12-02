@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +11,7 @@
     <p>{{ msg }}</p>
     <p>Please tap in the record you want to insert!</p>
     <form  method="post" action="/manage/insert/">
+        {% csrf_token %}
         <p>FlightNo: <input type="text" name="flightno" /></p>
         <p>AirlineCode: <input type="text" name="airlinecode" /></p>
         <p>DeptIATA: <input type="text" name="deptiata" /></p>

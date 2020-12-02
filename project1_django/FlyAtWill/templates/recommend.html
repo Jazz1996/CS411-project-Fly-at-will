@@ -1,31 +1,43 @@
 <!DOCTYPE html>
 {% load static %}
-<link rel="stylesheet" href="{% static '/FlyAtWill.css' %}">
+<!-- <link rel="stylesheet" href="{% static '/FlyAtWill.css' %}"> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Jazz1996/CS411-project-Fly-at-will@css/FlyAtWill.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Recommend Flight</title>
+    <base href="/">
 </head>
 <body>
   <div class="App">
+    <nav>
+      <div class="nav-wrapper">
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <li><a href="/fly-at-will">Main</a></li>
+          <li><a href="/manage">Manage</a></li>
+          <li><a href="/recommend">Recommend</a></li>
+          <li><a href="/transfer">Transfer</a></li>
+        </ul>
+      </div>
+    </nav>
     <header class="App-header">
       <div class="bg-box"><img src={% static '/images/pic2.jpg' %} class="bg_img" alt="logo"/></div>
       <div class="logo-box"><img src={% static '/images/logo.png' %} class="logo_img" alt="bg"/></div>
-      <div class="text-box"><p>Fly At Will Tool</p></div>
+      <div class="text-box"><p>Recommend Flight</p></div>
     </header>
     <div class="form-class"></div>
   </div>
 
-<form method="POST" action="/recommend-results">
+<form method="POST" action="/recommend-results" class="form-class">
     {% csrf_token %}
     <div class="row">
-      <div class="input-field col s6">From:<input id="from" type="text" name="From"></div>
-      <div class="input-field col s6">Preference:<input id="from" type="text" name="Preference"></div>
+      <div class="input-field col s6">From:<input autocomplete="off" id="from" type="text" name="From"></div>
+      <div class="input-field col s12">Preference:<input autocomplete="off" id="from" type="text" name="Preference"></div>
     </div>
     <div class="button">
-    <input type="submit" class="waves-effect waves-light btn" color="#3f50b5" value="Get recommend">
+    <input type="submit" class="waves-effect waves-light btn" color="#3f50b5" value="Get recommended">
     </div>
 </form>
 

@@ -1,30 +1,46 @@
 <!DOCTYPE html>
 {% load static %}
-<link rel="stylesheet" href="{% static '/FlyAtWill.css' %}">
+<!-- <link rel="stylesheet" href="{% static '/FlyAtWill.css' %}"> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Jazz1996/CS411-project-Fly-at-will@css/FlyAtWill.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Fly At Will</title>
+    <base href="/">
 </head>
 <body>
-  <div class="App">
-    <header class="App-header">
-      <div class="bg-box"><img src={% static '/images/pic2.jpg' %} class="bg_img" alt="logo"/></div>
-      <div class="logo-box"><img src={% static '/images/logo.png' %} class="logo_img" alt="bg"/></div>
-      <div class="text-box"><p>Fly At Will Tool</p></div>
-    </header>
-    <div class="form-class"></div>
-  </div>
 
-<form method="POST" action="/search-results">
+
+
+<div class="App">
+  <header class="App-header">
+    <nav>
+      <div class="nav-wrapper">
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <li><a href="/fly-at-will">Main</a></li>
+          <li><a href="/manage">Manage</a></li>
+          <li><a href="/recommend">Recommend</a></li>
+          <li><a href="/transfer">Transfer</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="bg-box"><img src={% static '/images/pic2.jpg' %} class="bg_img" alt="logo"/></div>
+    <div class="logo-box"><img src={% static '/images/logo.png' %} class="logo_img" alt="bg"/></div>
+    <div class="text-box" color="black"><p>Fly At Will Tool</p></div>
+  </header>
+</div>
+
+
+
+<form method="POST" action="/search-results" class="form-class">
     {% csrf_token %}
     <div class="row">
-      <div class="input-field col s6">From:<input id="from" type="text" name="From"></div>
-      <div class="input-field col s6">To:<input id="from" type="text" name="To"></div>
-      <div class="input-field col s6">Depart:<input id="from" type="date" name="Depart"></div>
-      <div class="input-field col s6">Return:<input id="from" type="date" name="Return"></div>
+      <div class="input-field col s6">From:<input autocomplete="off" id="from" type="text" name="From"></div>
+      <div class="input-field col s6">To:<input autocomplete="off" id="from" type="text" name="To"></div>
+      <div class="input-field col s6">Depart:<input autocomplete="off" id="from" type="date" name="Depart"></div>
+      <div class="input-field col s6">Return:<input autocomplete="off" id="from" type="date" name="Return"></div>
       <select>
         <option value="1">Option 1</option>
         <option value="2">Option 2</option>
@@ -32,11 +48,10 @@
       </select>
     </div>
     <div class="button">
-    <input type="submit" class="waves-effect waves-light btn" color="#3f50b5" value="Search">
+      <input type="submit" class="waves-effect waves-light btn" color="#3f50b5" value="Search">
     </div>
 </form>
 
-<!--<script type="text/javascript" src="js/materialize.min.js"></script>-->
 </body>
 </html>
 

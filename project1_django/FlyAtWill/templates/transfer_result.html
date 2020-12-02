@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% load static %}
+<link rel="stylesheet" href="{% static '/FlyAtWill.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Return Result</title>
+</head>
+<body>
+  <div class="App">
+    <header class="App-header">
+      <div class="bg-box"><img src={% static '/images/pic2.jpg' %} class="bg_img" alt="logo"/></div>
+      <div class="logo-box"><img src={% static '/images/logo.png' %} class="logo_img" alt="bg"/></div>
+      <div class="text-box"><p>Search Results</p></div>
+    </header>
+    <div class="form-class"></div>
+  </div>
+<table class="striped" border="1">
+  <thead>
+    <tr>
+        <th>Departure Time</th>
+        <th>Departure</th>
+        <th>First Flight Number</th>
+        <th>Stop Arrival Time</th>
+        <th>Stop</th>
+        <th>Stay Time</th>
+        <th>Stop Departure Time</th>
+        <th>Second Flight Number</th>
+        <th>Arrival Time</th>
+        <th>Arrival</th>
+<!--        <th>IATA Code</th>-->
+<!--        <th>City</th>-->
+<!--        <th>Latitude</th>-->
+<!--        <th>Longitude</th>-->
+    </tr>
+  </thead>
+    {% for row in sr %}
+    <tr>
+<!--        <td>{{ row.flightno }}</td>-->
+<!--        <td>{{ row.airlinecode }}</td>-->
+<!--        <td>{{ row.deptiata }}</td>-->
+<!--        <td>{{ row.arriata }}</td>-->
+<!--        <td>{{ row.depttime }}</td>-->
+<!--        <td>{{ row.arrtime }}</td>-->
+        <td>{{ row.0 }}</td>
+        <td>{{ row.1 }}</td>
+        <td>{{ row.2 }}</td>
+        <td>{{ row.3 }}</td>
+        <td>{{ row.4 }}</td>
+        <td>{{ row.5 }}</td>
+        <td>{{ row.6 }}</td>
+        <td>{{ row.7 }}</td>
+        <td>{{ row.8 }}</td>
+        <td>{{ row.9 }}</td>
+    </tr>
+    {% endfor %}
+<!--    {% for row2 in return_result %}-->
+<!--    <tr>-->
+<!--        <td>{{ row2.flightno }}</td>-->
+<!--        <td>{{ row2.airlinecode }}</td>-->
+<!--        <td>{{ row2.deptiata }}</td>-->
+<!--        <td>{{ row2.arriata }}</td>-->
+<!--        <td>{{ row2.depttime }}</td>-->
+<!--        <td>{{ row2.arrtime }}</td>-->
+<!--    </tr>-->
+<!--    {% endfor %}-->
+</table>
+</body>
+</html>

@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Flight, Airport, FlyAtWill
-from datetime import datetime
+# from datetime import datetime
 from django.db.models import Q
 from django.db import connection, transaction
+import datetime
 
 # Create your views here.
 
@@ -14,6 +15,10 @@ def FlyAtWillPage(request):
 
 def RecommendPage(request):
     return render(request, 'recommend.html')
+
+
+def TransferPage(request):
+    return render(request, 'transfer.html')
 
 
 def SearchFlight(request):
@@ -27,26 +32,26 @@ def SearchFlight(request):
 
     # depart_buf = Airport.objects.filter(city=depart_city)
     # arrival_buf = Airport.objects.filter(city=arrival_city)
-    # depart_buf = Airport.objects.raw("SELECT * FROM Airport WHERE city = %s", [depart_city])
-    # arrival_buf = Airport.objects.raw("SELECT * FROM Airport WHERE city = %s", [arrival_city])
-    #
-    # depart_airport_list = []
-    # arrival_airport_list = []
-    # for row in depart_buf:
-    #     depart_airport_list.append(row.iatacode)
-    # for row in arrival_buf:
-    #     arrival_airport_list.append(row.iatacode)
+    depart_buf = Airport.objects.raw("SELECT * FROM Airport WHERE city = %s", [depart_city])
+    arrival_buf = Airport.objects.raw("SELECT * FROM Airport WHERE city = %s", [arrival_city])
+
+    depart_airport_list = []
+    arrival_airport_list = []
+    for row in depart_buf:
+        depart_airport_list.append(row.iatacode)
+    for row in arrival_buf:
+        arrival_airport_list.append(row.iatacode)
 
     # depart_date and return_date are string type.
     depart_date = request.POST['Depart']
     return_date = request.POST['Return']
 
-    depart_day_tmp = datetime.strptime(depart_date, '%Y-%m-%d')
+    depart_day_tmp = datetime.datetime.strptime(depart_date, '%Y-%m-%d')
     depart_day = depart_day_tmp.weekday() + 1
 
     cursor = connection.cursor()
     if return_date:
-        return_day_tmp = datetime.strptime(return_date, '%Y-%m-%d')
+        return_day_tmp = datetime.datetime.strptime(return_date, '%Y-%m-%d')
         return_day = return_day_tmp.weekday() + 1
         return_result = Flight.objects.none()
         if return_day == 1:
@@ -179,7 +184,7 @@ def SentenceProcess(sentence):
     low_weight = 0.1
     high_weight = 10
     background_vocalbulary = ["I", "want", "to", "go", "a", "the", "an", "place", "with", "of", "A", "that", "has", ",",\
-                              "and", "city", "food"]
+                              "and", "city", "food", "China", "is", "located", "at", "lots"]
     word_list = sentence.split()
     sen_dict = {}
     for word in word_list:
@@ -225,6 +230,27 @@ def RecommendFlight(request):
         del arrival_city[key]
 
     return render(request, 'recommend_result.html', {'arrival_city': arrival_city, 'recommend_flights': recommend_flights})
+
+
+def Transfer(request):
+    depart_city = request.POST['From']
+    arrival_city = request.POST['To']
+    depart_buf = Airport.objects.raw("SELECT * FROM Airport WHERE city = %s", [depart_city])
+    arrival_buf = Airport.objects.raw("SELECT * FROM Airport WHERE city = %s", [arrival_city])
+
+    depart_airport_list = []
+    arrival_airport_list = []
+    for row in depart_buf:
+        depart_airport_list.append(row.iatacode)
+    for row in arrival_buf:
+        arrival_airport_list.append(row.iatacode)
+
+    # query_transfer = "CALL oneStop('%s','%s')" % (depart_airport_list[0], arrival_airport_list[0])
+    cursor = connection.cursor()
+    cursor.execute("CALL oneStop(%s, %s)", [depart_airport_list[0], arrival_airport_list[0]])
+    sr = cursor.fetchall()
+    # sr = Flight.objects.raw(query_transfer)
+    return render(request, 'transfer_result.html', {'sr': sr})
 
 
 def search(request):

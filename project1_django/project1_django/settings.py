@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+import os
+from os.path import normpath, join
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -138,7 +139,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    BASE_DIR / 'static',
+# STATICFILES_DIRS = (
+#     BASE_DIR / 'static',
+#     '/var/www/static/',
+# )
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = normpath(join(BASE_DIR, 'assets'))
+STATICFILES_DIRS = [
+    # os.path.join(BASE_DIR, "static"),
+    normpath(join(BASE_DIR, 'static')),
     '/var/www/static/',
-)
+]

@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from FlyAtWill import views
 from FlyAtWill.views import FlyAtWill
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,6 +25,8 @@ urlpatterns = [
     path('search-results', views.SearchFlight),
     path('recommend/', views.RecommendPage),
     path('recommend-results', views.RecommendFlight),
+    path('transfer/', views.TransferPage),
+    path('transfer-results', views.Transfer),
     path('search/', views.search),
     path('search/result', views.search_result),
     path('manage/', views.manage),
@@ -31,3 +34,4 @@ urlpatterns = [
     path('manage/insert/', views.insert),
     path('manage/update/', views.update)
 ]
+urlpatterns += staticfiles_urlpatterns()

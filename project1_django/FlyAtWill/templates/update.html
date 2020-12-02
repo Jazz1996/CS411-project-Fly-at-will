@@ -12,6 +12,7 @@
     <p>Please tap in the record you want to Update!</p>
     {{ msg }}
     <form  method="post" action="/manage/update/">
+        {% csrf_token %}
         {% for row in f %}
             <p>FlightNo: <input type="text" name="flightno" value="{{ row.flightno }}" /></p>
             <p>AirlineCode: <input type="text" name="airlinecode" value="{{ row.airlinecode }}" /></p>
