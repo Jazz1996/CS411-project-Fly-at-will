@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/FlyAtWill.css">
+</head>
+<body>
+    <h1>Fly-At-Will</h1>
+    <h2>Update Manage</h2>
+    <p>Please tap in the record you want to Update!</p>
+    {{ msg }}
+    <form  method="post" action="/manage/update/">
+        {% for row in f %}
+            <p>FlightNo: <input type="text" name="flightno" value="{{ row.flightno }}" /></p>
+            <p>AirlineCode: <input type="text" name="airlinecode" value="{{ row.airlinecode }}" /></p>
+            <p>DeptIATA: <input type="text" name="deptiata" value="{{ row.deptiata }}" /></p>
+            <p>ArrIATA: <input type="text" name="arriata" value="{{ row.arriata }}" /></p>
+            <p>DeptTime: <input type="text" name="depttime" value="{{ row.depttime }}" /></p>
+            <p>ArrTime:  <input type="text" name="arrtime" value="{{ row.arrtime }}" /></p>
+            <p>Aircraft: <input type="text" name="aircraft" value="{{ row.aircraft }}" /></p>
+            <p>Distance: <input type="text" name="distance" value="{{ row.distance }}" /></p>
+            <p>OTD: <input type="text" name="otd" value="{{ row.otd }}" /></p>
+            <p>AvgDelay: <input type="text" name="avgdelay" value="{{ row.avgdelay }}" /></p>
+            <p>Monday: <input type="text" name="monday" value="{{ row.monday }}" /></p>
+            <p>Tuesday: <input type="text" name="tuesday" value="{{ row.tuesday }}" /></p>
+            <p>Wednesday: <input type="text" name="wednesday" value="{{ row.wednesday }}" /></p>
+            <p>Thursday: <input type="text" name="thursday" value="{{ row.thursday }}" /></p>
+            <p>Friday: <input type="text" name="friday" value="{{ row.friday }}" /></p>
+            <p>Saturday: <input type="text" name="saturday" value="{{ row.saturday }}" /></p>
+            <p>Sunday: <input type="text" name="sunday" value="{{ row.sunday }}" /></p>
+            <p><input type="submit" value="submit" /></p>
+        {% endfor %}
+    </form>
+     <button onclick="location.href='/manage/'">BACK</button>
+</body>
+</html>

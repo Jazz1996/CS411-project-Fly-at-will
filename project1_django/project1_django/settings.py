@@ -84,9 +84,22 @@ DATABASES = {
         'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '3306',
-    }
+    },
+    # 'mongo': {
+    #     'ENGINE': 'djongo',
+    #     'ENFORCE_SCHEMA': True,
+    #     'NAME': 'fly_at_will_mongo',
+    #     'CLIENT': {
+    #         'host': '127.0.0.1',
+    #     }
+    # },
+    'fly_at_will_mongo': {
+        'ENGINE': None,
+    },
 }
 
+from mongoengine import connect
+connect('fly_at_will_mongo')
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

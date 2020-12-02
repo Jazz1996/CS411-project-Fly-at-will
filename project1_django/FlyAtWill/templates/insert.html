@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/FlyAtWill.css">
+</head>
+<body>
+    <h1>Fly-At-Will</h1>
+    <h2>Insert Manage</h2>
+    <p>{{ msg }}</p>
+    <p>Please tap in the record you want to insert!</p>
+    <form  method="post" action="/manage/insert/">
+        <p>FlightNo: <input type="text" name="flightno" /></p>
+        <p>AirlineCode: <input type="text" name="airlinecode" /></p>
+        <p>DeptIATA: <input type="text" name="deptiata" /></p>
+        <p>ArrIATA: <input type="text" name="arriata" /></p>
+        <p>DeptTime: <input type="text" name="depttime" /></p>
+        <p>ArrTime:  <input type="text" name="arrtime" /></p>
+        <p>Aircraft: <input type="text" name="aircraft" /></p>
+        <p>Distance: <input type="text" name="distance" /></p>
+        <p>OTD: <input type="text" name="otd" /></p>
+        <p>AvgDelay: <input type="text" name="avgdelay" /></p>
+        <p>Monday: <input type="checkbox" name="monday" /></p>
+        <p>Tuesday: <input type="checkbox" name="tuesday" /></p>
+        <p>Wednesday: <input type="checkbox" name="wednesday" /></p>
+        <p>Thursday: <input type="checkbox" name="thursday" /></p>
+        <p>Friday: <input type="checkbox" name="friday" /></p>
+        <p>Saturday: <input type="checkbox" name="saturday" /></p>
+        <p>Sunday: <input type="checkbox" name="sunday" /></p>
+        <p><input type="submit" value="submit" /></p>
+    </form>
+     <button onclick="location.href='/manage/'">BACK</button>
+</body>
+</html>

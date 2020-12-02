@@ -25,28 +25,38 @@
         <th>Arrival</th>
         <th>Departure Time</th>
         <th>Arrival Time</th>
+<!--        <th>IATA Code</th>-->
+<!--        <th>City</th>-->
+<!--        <th>Latitude</th>-->
+<!--        <th>Longitude</th>-->
     </tr>
   </thead>
     {% for row in one_way_result %}
     <tr>
-        <td>{{ row.flightno }}</td>
-        <td>{{ row.airlinecode }}</td>
-        <td>{{ row.deptiata }}</td>
-        <td>{{ row.arriata }}</td>
-        <td>{{ row.depttime }}</td>
-        <td>{{ row.arrtime }}</td>
+<!--        <td>{{ row.flightno }}</td>-->
+<!--        <td>{{ row.airlinecode }}</td>-->
+<!--        <td>{{ row.deptiata }}</td>-->
+<!--        <td>{{ row.arriata }}</td>-->
+<!--        <td>{{ row.depttime }}</td>-->
+<!--        <td>{{ row.arrtime }}</td>-->
+        <td>{{ row.0 }}</td>
+        <td>{{ row.1 }}</td>
+        <td>{{ row.2 }}</td>
+        <td>{{ row.3 }}</td>
+        <td>{{ row.4 }}</td>
+        <td>{{ row.5 }}</td>
     </tr>
     {% endfor %}
-    {% for row2 in return_result %}
-    <tr>
-        <td>{{ row2.flightno }}</td>
-        <td>{{ row2.airlinecode }}</td>
-        <td>{{ row2.deptiata }}</td>
-        <td>{{ row2.arriata }}</td>
-        <td>{{ row2.depttime }}</td>
-        <td>{{ row2.arrtime }}</td>
-    </tr>
-    {% endfor %}
+<!--    {% for row2 in return_result %}-->
+<!--    <tr>-->
+<!--        <td>{{ row2.flightno }}</td>-->
+<!--        <td>{{ row2.airlinecode }}</td>-->
+<!--        <td>{{ row2.deptiata }}</td>-->
+<!--        <td>{{ row2.arriata }}</td>-->
+<!--        <td>{{ row2.depttime }}</td>-->
+<!--        <td>{{ row2.arrtime }}</td>-->
+<!--    </tr>-->
+<!--    {% endfor %}-->
 </table>
 </body>
 </html>

@@ -1,5 +1,5 @@
 from django.db import models
-
+import mongoengine
 
 # Create your models here.
 class Airport(models.Model):
@@ -37,3 +37,10 @@ class Flight(models.Model):
     class Meta:
         managed = False
         db_table = 'Flight'
+
+
+class FlyAtWill(mongoengine.Document):
+    cityName = mongoengine.StringField()
+    characteristics = mongoengine.ListField(mongoengine.StringField())
+    description = mongoengine.StringField()
+    image = mongoengine.StringField()

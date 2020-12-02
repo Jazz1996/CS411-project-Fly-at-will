@@ -16,9 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from FlyAtWill import views
+from FlyAtWill.views import FlyAtWill
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('fly-at-will/', views.FlyAtWillPage),
-    path('search-results', views.SearchFlight)
+    path('search-results', views.SearchFlight),
+    path('recommend-results', views.RecommendFlight),
+    path('search/', views.search),
+    path('search/result', views.search_result),
+    path('manage/', views.manage),
+    path('manage/delete/', views.delete),
+    path('manage/insert/', views.insert),
+    path('manage/update/', views.update)
 ]

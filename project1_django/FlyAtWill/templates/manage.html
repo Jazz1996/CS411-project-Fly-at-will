@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/FlyAtWill.css">
+</head>
+<body>
+    <h1>Fly-At-Will</h1>
+    <h2>Search Manage</h2>
+    <p>You don't need to input all the parameter</p>
+    <p>Use * at the FlightNo to list all records</p>
+    <p>Want to insert new records? Click here -> <button onclick="location.href='/manage/insert'">New</button> </p>
+    <form method="post" action="/manage/">
+        {% csrf_token %}
+        FlightNo: <input type="text" name="flightno" />
+        AirlineCode: <input type="text" name="airlinecode" />
+        DeptIATA: <input type="text" name="deptiata" />
+        ArrIATA: <input type="text" name="arriata" />
+        DeptTime: <input type="text" name="depttime" />
+        ArrTime:  <input type="text" name="arrtime" />
+        Aircraft: <input type="text" name="aircraft" />
+        Distance: <input type="text" name="distance" />
+        OTD: <input type="text" name="otd" />
+        AvgDelay: <input type="text" name="avgdelay" />
+        Monday: <input type="text" name="monday" />
+        Tuesday: <input type="text" name="tuesday" />
+        Wednesday: <input type="text" name="wednesday" />
+        Thursday: <input type="text" name="thursday" />
+        Friday: <input type="text" name="friday" />
+        Saturday: <input type="text" name="saturday" />
+        Sunday: <input type="text" name="sunday" />
+        <input type="submit" value="submit" />
+    </form>
+    <h2>{{ msg }}</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>FlightNo</th>
+                <th>AirlineCode</th>
+                <th>DeptIATA</th>
+                <th>ArrIATA</th>
+                <th>DeptTime</th>
+                <th>ArrTime</th>
+                <th>Aircraft</th>
+                <th>Distance</th>
+                <th>OTD</th>
+                <th>AvgDelay</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+                <th>Operation</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in sr %}
+                <tr>
+                    <td>{{ row.flightno }}</td>
+                    <td>{{ row.airlinecode }}</td>
+                    <td>{{ row.deptiata }}</td>
+                    <td>{{ row.arriata }}</td>
+                    <td>{{ row.depttime }}</td>
+                    <td>{{ row.arrtime }}</td>
+                    <td>{{ row.aircraft }}</td>
+                    <td>{{ row.distance }}</td>
+                    <td>{{ row.otd }}</td>
+                    <td>{{ row.avgdelay }}</td>
+                    <td>{{ row.monday }}</td>
+                    <td>{{ row.tuesday }}</td>
+                    <td>{{ row.wednesday }}</td>
+                    <td>{{ row.thursday }}</td>
+                    <td>{{ row.friday }}</td>
+                    <td>{{ row.saturday }}</td>
+                    <td>{{ row.sunday }}</td>
+                    <td>
+                        <a href="/manage/update/?nid={{ row.flightno }}"> Edit </a> | <a href="/manage/delete/?nid={{ row.flightno }}"> Delete </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
