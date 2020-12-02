@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load static %}
+<link rel="stylesheet" href="{% static '/FlyAtWill.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Return Result</title>
+</head>
+<body>
+  <div class="App">
+    <header class="App-header">
+      <div class="bg-box"><img src={% static '/images/pic2.jpg' %} class="bg_img" alt="logo"/></div>
+      <div class="logo-box"><img src={% static '/images/logo.png' %} class="logo_img" alt="bg"/></div>
+      <div class="text-box"><p>Recommend Results</p></div>
+    </header>
+    <div class="form-class"></div>
+  </div>
+<table class="striped" border="1">
+  <thead>
+    <tr>
+        <th>Recommended Cities</th>
+    </tr>
+  </thead>
+    {% for row in arrival_city %}
+    <tr>
+        <td>{{ row }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<table class="striped" border="1">
+  <thead>
+    <tr>
+        <th>Flight Number</th>
+        <th>Airlines</th>
+        <th>Departure</th>
+        <th>Arrival</th>
+        <th>Departure Time</th>
+        <th>Arrival Time</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+        <th>Saturday</th>
+        <th>Sunday</th>
+<!--        <th>IATA Code</th>-->
+<!--        <th>City</th>-->
+<!--        <th>Latitude</th>-->
+<!--        <th>Longitude</th>-->
+    </tr>
+  </thead>
+    {% for one_flight in recommend_flights %}
+    {% for row in one_flight %}
+    <tr>
+        <td>{{ row.0 }}</td>
+        <td>{{ row.1 }}</td>
+        <td>{{ row.2 }}</td>
+        <td>{{ row.3 }}</td>
+        <td>{{ row.4 }}</td>
+        <td>{{ row.5 }}</td>
+        <td>{{ row.6 }}</td>
+        <td>{{ row.7 }}</td>
+        <td>{{ row.8 }}</td>
+        <td>{{ row.9 }}</td>
+        <td>{{ row.10 }}</td>
+        <td>{{ row.11 }}</td>
+        <td>{{ row.12 }}</td>
+    </tr>
+    {% endfor %}
+    {% endfor %}
+</table>
+</body>
+</html>

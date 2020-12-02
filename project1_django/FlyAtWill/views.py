@@ -12,6 +12,10 @@ def FlyAtWillPage(request):
     return render(request, 'FlyAtWill.html')
 
 
+def RecommendPage(request):
+    return render(request, 'recommend.html')
+
+
 def SearchFlight(request):
     depart_city = request.POST['From']
     arrival_city = request.POST['To']
@@ -175,7 +179,7 @@ def SentenceProcess(sentence):
     low_weight = 0.1
     high_weight = 10
     background_vocalbulary = ["I", "want", "to", "go", "a", "the", "an", "place", "with", "of", "A", "that", "has", ",",\
-                              "and", "city"]
+                              "and", "city", "food"]
     word_list = sentence.split()
     sen_dict = {}
     for word in word_list:
@@ -198,10 +202,31 @@ def RecommendFlight(request):
     for feature in feature_list:
         recommend_results = recommend_results.filter(characteristics__icontains=feature)
 
+    arrival_city = []
+    for row in recommend_results:
+        if row.cityName != depart_city:
+            arrival_city.append(row.cityName)
+
+    recommend_flights = []
+    for arr_city in arrival_city:
+        query_search = "SELECT f.flightno, f.airlinecode, dept.iatacode, arr.iatacode, f.depttime, f.arrtime, f.monday, f.tuesday, f.wednesday, f.thursday, f.friday, f.saturday, f.sunday \
+                        FROM Flight f JOIN Airport dept ON f.deptiata=dept.iatacode \
+                        JOIN Airport arr ON f.arriata=arr.iatacode \
+                        WHERE dept.city = %s AND arr.city = %s"
+        cursor = connection.cursor()
+        cursor.execute(query_search, [depart_city, arr_city])
+        tmp_result = cursor.fetchall()
+        if tmp_result:
+            recommend_flights.append(tmp_result)
+        else:
+            arrival_city.remove(arr_city)
+
+    return render(request, 'recommend_result.html', {'arrival_city': arrival_city, 'recommend_flights': recommend_flights})
+
 
 def search(request):
     # return HttpResponse('<input type="text" />')
-    return render(request,'search.html')
+    return render(request, 'search.html')
 
 
 def search_result(request):

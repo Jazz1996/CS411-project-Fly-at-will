@@ -1,10 +1,34 @@
 <!DOCTYPE html>
+{% load static %}
+<link rel="stylesheet" href="{% static '/FlyAtWill.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Recommend Flight</title>
 </head>
 <body>
+  <div class="App">
+    <header class="App-header">
+      <div class="bg-box"><img src={% static '/images/pic2.jpg' %} class="bg_img" alt="logo"/></div>
+      <div class="logo-box"><img src={% static '/images/logo.png' %} class="logo_img" alt="bg"/></div>
+      <div class="text-box"><p>Fly At Will Tool</p></div>
+    </header>
+    <div class="form-class"></div>
+  </div>
 
+<form method="POST" action="/recommend-results">
+    {% csrf_token %}
+    <div class="row">
+      <div class="input-field col s6">From:<input id="from" type="text" name="From"></div>
+      <div class="input-field col s6">Preference:<input id="from" type="text" name="Preference"></div>
+    </div>
+    <div class="button">
+    <input type="submit" class="waves-effect waves-light btn" color="#3f50b5" value="Get recommend">
+    </div>
+</form>
+
+<!--<script type="text/javascript" src="js/materialize.min.js"></script>-->
 </body>
 </html>

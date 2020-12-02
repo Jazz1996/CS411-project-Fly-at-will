@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('fly-at-will/', views.FlyAtWillPage),
     path('search-results', views.SearchFlight),
+    path('recommend/', views.RecommendPage),
     path('recommend-results', views.RecommendFlight),
     path('search/', views.search),
     path('search/result', views.search_result),
