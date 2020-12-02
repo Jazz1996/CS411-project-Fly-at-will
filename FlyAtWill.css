@@ -1,0 +1,77 @@
+.App {
+  text-align: center;
+}
+.App-header {
+  background-color: #ffffff;
+  min-height: 25vh;
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-start; */
+  /* justify-content: flex-start; */
+  font-size: calc(30px + 2vmin);
+  color: black;
+}
+.nav-wrapper{
+  z-index: 1999;
+  height: 20px;
+  background-color: #26a69a;
+  opacity: 60%;
+}
+.row {
+  width: 400px;
+  color: #3f50b5;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+.button {
+  width: 400px;
+  color: #3f50b5;
+  left: 45%;
+  position: relative;
+}
+.input-field{
+  color: #3f50b5;
+}
+.bg_img {
+  height: 400px;
+  width: 100%;
+  opacity: 30%;
+}
+.logo_img {
+  height: 150px;
+  width: auto;
+  opacity: 90%;
+}
+.bg-box {
+  position: relative;
+  z-index: 1;
+  top: -1.8em;
+}
+.logo-box {
+  position: absolute;
+  z-index: 2;
+  top: 2em;
+  left: 43%;
+}
+.text-box {
+  position: absolute;
+  z-index: 2;
+  top: 5em;
+  left: 39%;
+}
+.form-class {
+  position: relative;
+  top: -3em;
+}
+.headr {
+  width:300px;
+  height:200px;
+  border:1px solid #f00;
+  z-index:100;
+}
+.striped {
+  position: relative;
+  top: -4em;
+  left: 5%;
+  width: 90%;
+}
